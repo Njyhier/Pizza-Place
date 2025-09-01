@@ -1,7 +1,7 @@
+//Constructors
 function Pizza(size, price) {
   this.size = size;
   this.price = price;
-  this.crust = [];
 }
 
 function Crust(type, price) {
@@ -13,6 +13,7 @@ function Topping(name, price) {
   this.price = price;
 }
 
+//Available Items
 var small = new Pizza("Small", 500);
 var medium = new Pizza("Medium", 900);
 var large = new Pizza("Large", 1200);
@@ -34,6 +35,7 @@ var sk = new Topping("Sausage & Kale", 300)
 
 var toppings = [pepperoni, supreme, ham, bbq, gbpc, sk]
 
+//create a menu
 function menu() {
 let text = "<h1>What we offer</h1><h2>Sizes</h2>"
 sizes.forEach(function(size){
@@ -46,30 +48,40 @@ sizes.forEach(function(size){
   });
   text += "<h2>Toppings</h2>"
   toppings.forEach(function(topping) {
-    text += topping.name + " @Ksh"  + topping.price + "<br>"
+    text += topping.name + " @Ksh"  + topping.price + "<br>"  
+    
   });
-document.getElementById("menu").innerHTML = text;
+document.getElementById("menu").innerHTML = text + "<br>" + '<button class="btn btn-success" id="p-order">Place Order</button>';
 } 
 
+//create an order from user inputs
 function orderFromInputs(order) {
   let sizeIndex = $("#size").val();
   let crustIndex = $("#crust").val();
   let topIndex = $("#topping").val();
+  let address = document.getElementById("location");
+  
 
   let sizeSelected = sizes[sizeIndex];
   let crustSelected = crusts[crustIndex];
   let toppingSelected = toppings[topIndex];
 
-  let number = parseInt($("input#orders").val());
+  let number = parseInt($("input#orders").val()) || 1;
+  let deliveryFee = 150;
 
   let total = sizeSelected.price + crustSelected.price + toppingSelected.price
   total *= number;
+  
+  let deliver = document.getElementById("delivery");
+  if (deliver.checked) {
+    total += deliveryFee;
+  }
 
-   document.getElementById("o-size").innerHTML = "size" +"-----     " + sizeSelected.size;
+   document.getElementById("o-size").innerHTML = "size" +"----- " + sizeSelected.size;
    document.getElementById("o-crust").innerHTML = "Crust" + "----- " + crustSelected.type;
    document.getElementById("o-top").innerHTML = "Toppings" + "----- " + toppingSelected.name;
    document.getElementById("quantity").innerHTML = "Quantity" + "----- " + number;
-   document.getElementById("cost").innerHTML = "Cost" + "----- " + total;
+   document.getElementById("cost").innerHTML = "Cost" + "----- " + "Ksh" + total;
 };
 
 //For the input form
@@ -98,20 +110,38 @@ function toppingOptions() {
   document.getElementById("topping").innerHTML = options;
 }
 
-$(document).ready(function(){
-  $("#mennu").click(function() {
-    menu();
-  });
-  sizeOptions();
-  crustOptions();
-  toppingOptions();
-
-  $("#order").click(function(event) {
-    event.preventDefault();
-    orderFromInputs();
+function resetFields(){
     $("#size").prop("selectedIndex", 0);
     $("#crust").prop("selectedIndex", 0);
     $("#topping").prop("selectedIndex", 0);
+    $("#orders").val("");
+}
+
+//UI
+$(document).ready(function(){
+  $("#mennu").click(function() {
+    menu();
+    $("#menu").toggle(200);
   });
 
+  
+
+  $("#confirm").click(function(event) {
+    event.preventDefault();
+    orderFromInputs();
+    $("#summary").show();
+    
+  });
+  $(document).on("click", "#p-order", function(){
+    $("#order-form").show();
+      sizeOptions();
+      crustOptions();
+      toppingOptions();
+  })
+  $("#submit").click(function(event){
+    event.preventDefault();
+    alert("Your order has been received and will be processed shortly");
+    $("#summary").hide();
+    resetFields();
+  })
 });
