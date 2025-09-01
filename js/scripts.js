@@ -35,16 +35,16 @@ var sk = new Topping("Sausage & Kale", 300)
 var toppings = [pepperoni, supreme, ham, bbq, gbpc, sk]
 
 function menu() {
-let text = "<h1>What we offer</h1><br>"
+let text = "<h1>What we offer</h1><h2>Sizes</h2>"
 sizes.forEach(function(size){
   text += size.size + " @ksh" + size.price + "<br>"
 
   });
-  text += "<h1>Crusts</h1>"
+  text += "<h2>Crusts</h2>"
   crusts.forEach(function(crust) {
     text += crust.type + " @Ksh" + crust.price + "<br>"
   });
-  text += "<h1>Toppings</h1>"
+  text += "<h2>Toppings</h2>"
   toppings.forEach(function(topping) {
     text += topping.name + " @Ksh"  + topping.price + "<br>"
   });
@@ -52,14 +52,66 @@ document.getElementById("menu").innerHTML = text;
 } 
 
 function orderFromInputs(order) {
-  var size = order.find("input.size").val();
-  var crust = order.find("input.crust").val();
-  var topping = order.find("input.topping").val();
-  
+  let sizeIndex = $("#size").val();
+  let crustIndex = $("#crust").val();
+  let topIndex = $("#topping").val();
+
+  let sizeSelected = sizes[sizeIndex];
+  let crustSelected = crusts[crustIndex];
+  let toppingSelected = toppings[topIndex];
+
+  let number = parseInt($("input#orders").val());
+
+  let total = sizeSelected.price + crustSelected.price + toppingSelected.price
+  total *= number;
+
+   document.getElementById("o-size").innerHTML = "size" +"-----     " + sizeSelected.size;
+   document.getElementById("o-crust").innerHTML = "Crust" + "----- " + crustSelected.type;
+   document.getElementById("o-top").innerHTML = "Toppings" + "----- " + toppingSelected.name;
+   document.getElementById("quantity").innerHTML = "Quantity" + "----- " + number;
+   document.getElementById("cost").innerHTML = "Cost" + "----- " + total;
 };
+
+//For the input form
+
+function sizeOptions() {
+  let options = "<option disabled selected>Select size:</option>"
+  sizes.forEach(function(size, index) {
+    options += "<option value='" + index + "'>" + size.size + " @Ksh" + size.price + "</option>"
+  })
+  document.getElementById("size").innerHTML = options;
+}
+
+function crustOptions() {
+  let options = "<option disabled selected>Select crust:</option>"
+  crusts.forEach(function(crust, index) {
+    options += "<option value='" + index + "'>"+  crust.type + " @Ksh" + crust.price + "</option>"
+  });
+  document.getElementById("crust").innerHTML = options;
+}
+
+function toppingOptions() {
+  let options = "<option disabled selected>Select topping:</option>"
+  toppings.forEach(function(topping, index) {
+    options += "<option value='" +index +"'>" + topping.name + " @Ksh" + topping.price + "</option>"
+  });
+  document.getElementById("topping").innerHTML = options;
+}
 
 $(document).ready(function(){
   $("#mennu").click(function() {
     menu();
   });
+  sizeOptions();
+  crustOptions();
+  toppingOptions();
+
+  $("#order").click(function(event) {
+    event.preventDefault();
+    orderFromInputs();
+    $("#size").prop("selectedIndex", 0);
+    $("#crust").prop("selectedIndex", 0);
+    $("#topping").prop("selectedIndex", 0);
+  });
+
 });

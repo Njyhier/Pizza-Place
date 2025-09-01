@@ -6,29 +6,48 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <script src="js/jquery-3.7.1.min.js"></script>
-  <script scr="js/scripts.js"></script>
+  <script src="js/scripts.js"></script>
   <title>Pizza-Place</title>
 </head>
 <body style="background-image:url(img/bg1.jpg)">
   <h1>PIZZA PLACE</h1>
   <P>Enjoy your favorite taste!!🤪✨</P>
+  <button class="btn btn-success" id="mennu">Get menu</button>
+  <div id="menu"></div>
   <form>
     <h2>Place your order:</h2>
     <div class="form-group">
       <label for="size">Size</label>
-      <input type="text" class="form-control size">
+      <select type="text" class="form-control" id="size"></select>
     </div>
 
     <div class="form-group">
       <label for="crust">Crust</label>
-      <input type="text" class="form-control crust">
+      <select class="form-control" id="crust"></select>
     </div>
 
     <div class="form-group">
       <label for="topping">Topping</label>
-      <input type="text" class="form-control topping">
+      <select class="form-control" id="topping"></select>
     </div>
+
+    <label for="orders">How many orders:</label>
+    <input class="form-control" id="orders" name="orders" min="1" max="15"/>
+
+    <button class="btn btn-danger" id="order">Place Order</button>
+
   </form>
+   
+  <div class="card summary">
+    <h1>Your order:</h1>
+    <div id="o-size"></div>
+    <div id="o-crust"></div>
+    <div id="o-top"></div>
+    <div id="quantity"></div>
+    <div id="cost"></div>
+   </div>
+  
+  
   
 </body>
 </html>
