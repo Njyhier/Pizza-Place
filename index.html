@@ -9,12 +9,16 @@
   <script src="js/scripts.js"></script>
   <title>Pizza-Place</title>
 </head>
-<body style="background-image:url(img/bg1.jpg)">
-  <h1>PIZZA PLACE</h1>
-  <P>Enjoy your favorite taste!!🤪✨</P>
-  <button class="btn btn-success" id="mennu">Get menu</button>
-  <div id="menu"></div>
-  <form>
+<body>
+
+  <div class="home">
+    <h1 id="title">PIZZA PLACE</h1>
+    <P>Enjoy your favorite taste!!🤪✨</P>
+    <button class="btn btn-success" id="mennu">Get menu</button>
+    
+    <div class="left">
+      <div id="menu"></div>
+       <form id="order-form">
     <h2>Place your order:</h2>
     <div class="form-group">
       <label for="size">Size</label>
@@ -32,22 +36,34 @@
     </div>
 
     <label for="orders">How many orders:</label>
-    <input class="form-control" id="orders" name="orders" min="1" max="15"/>
+    <input class="form-control" id="orders" name="orders" min="1" max="10"/>
 
-    <button class="btn btn-danger" id="order">Place Order</button>
+    
+      <label>
+        <input type="checkbox" id="delivery">Make delivery @Ksh150</label>
+      </label>
+    
+
+
+    <div id="delivery">
+      <input type="text" class="form-control" id="location" placeholder="Enter address"/>
+    </div>
+
+
+
+    <button class="btn btn-danger" id="confirm">Confirm</button>
 
   </form>
-   
-  <div class="card summary">
-    <h1>Your order:</h1>
-    <div id="o-size"></div>
-    <div id="o-crust"></div>
-    <div id="o-top"></div>
-    <div id="quantity"></div>
-    <div id="cost"></div>
-   </div>
-  
-  
-  
-</body>
+      <div class="card" id="summary">
+        <h1>Your order:</h1>
+        <div id="o-size"></div>
+        <div id="o-crust"></div>
+        <div id="o-top"></div>
+        <div id="quantity"></div>
+        <div id="cost"></div>
+        <button id="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </div> 
+  </body>
 </html>
