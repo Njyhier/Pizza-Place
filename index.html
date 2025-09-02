@@ -1,69 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/styles.css" rel="stylesheet" type="text/css">
-  <script src="js/jquery-3.7.1.min.js"></script>
-  <script src="js/scripts.js"></script>
-  <title>Pizza-Place</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.7.1.min.js"></script>  
+    <script src="js/scripts.js"></script>
+    <title>Pizza-Place</title>
+  </head>
 <body>
-
-  <div class="home">
-    <h1 id="title">PIZZA PLACE</h1>
-    <P>Enjoy your favorite taste!!🤪✨</P>
-    <button class="btn btn-success" id="mennu">Get menu</button>
-    
-    <div class="left">
-      <div id="menu"></div>
-       <form id="order-form">
-    <h2>Place your order:</h2>
-    <div class="form-group">
-      <label for="size">Size</label>
-      <select type="text" class="form-control" id="size"></select>
-    </div>
-
-    <div class="form-group">
-      <label for="crust">Crust</label>
-      <select class="form-control" id="crust"></select>
-    </div>
-
-    <div class="form-group">
-      <label for="topping">Topping</label>
-      <select class="form-control" id="topping"></select>
-    </div>
-
-    <label for="orders">How many orders:</label>
-    <input class="form-control" id="orders" name="orders" min="1" max="10"/>
-
-    
-      <label>
-        <input type="checkbox" id="delivery">Make delivery @Ksh150</label>
-      </label>
-    
-
-
-    <div id="delivery">
-      <input type="text" class="form-control" id="location" placeholder="Enter address"/>
-    </div>
-
-
-
-    <button class="btn btn-danger" id="confirm">Confirm</button>
-
-  </form>
-      <div class="card" id="summary">
-        <h1>Your order:</h1>
-        <div id="o-size"></div>
-        <div id="o-crust"></div>
-        <div id="o-top"></div>
-        <div id="quantity"></div>
-        <div id="cost"></div>
-        <button id="submit" class="btn btn-success">Submit</button>
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-12">
+        <div class="landing">
+          <div class="top">
+            <h1>PIZZA PLACE</h1>
+            <p>Enjoy your favorite taste 🤪✨</p>
+            <button class="btn" id="mennu">Get Menu</button>
+          </div>
+        </div>
       </div>
+
+      <div class="col-md-12">
+        <div id="menu">
+          
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <form id="input">
+          <h2>Place your order</h2>
+
+          <div class="form-group">
+            <label for="size">Size:</label>
+            <select class="form-control" id="size"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="crust">Crust:</label>
+            <select class="form-control" id="crust"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="topping">Topping:</label>
+            <select class="form-control" id="topping"></select>
+          </div>
+
+          <div class="quantity">
+            <label for="orders">Number of Orders</label> <br>
+            <button type="button" id="dec" class="btn btn-danger">-</button>
+            <input type="text" id="orders" value="1">
+            <button type="button" id="inc" class="btn btn-success">+</button>
+          </div>
+
+          <label>
+            <input type="checkbox" id="delivery">Deliver for Ksh.150
+          </label>
+
+          <input type="text" class="form-control" placeholder="Enter location...." id="location">
+          <button class="btn" id="confirm">To checkout..</button>
+        </form>
+      </div> 
+
+      <div class="col-md-6">
+        <div id="checkout">
+          <h3>Your Selection:</h3>
+          <div id="o-size"></div>
+          <div id="o-crust"></div>
+          <div id="o-top"></div>
+          <div id="quantity"></div>
+          <div id="cost"></div>
+          <div id="d-location"></div>
+          <button type="submit" id="submit">Submit!</button>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h1>Message us:</h1>
+        <input type="text" id="name" placeholder="Name...">
+        <input type="email" id="email" placeholder="email..."><br>
+        <label for="msg">How was your ordering experience?</label>
+        <textarea class="form-control" id="msg" placeholder="Message here...." type="text"></textarea> 
+      </div>
+
     </div>
-  </div> 
-  </body>
+  </div>
+</body>
 </html>
