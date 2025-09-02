@@ -1,82 +1,93 @@
 @import url('https://fonts.googleapis.com/css?family=Copse|Delius+Swash+Caps|Gabriela|Unkempt&display=swap');
 body {
-  background-image: url("../img/bg1.jpg");
-  background-position: center;
+  background-image: url('../img/bg2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
- 
-  height: 850px;
-  width: 100%;
-  backdrop-filter: blur(5px);
-  top:0%;
-  background-attachment: fixed;
- 
-}
-
-.home {
-  
-  background-size: cover;
-  background-attachment: fixed;
-  text-align: center;
-  font-family: 'Gabriela', serif;
-  top: 0%;
-  bottom: 0%;
-  padding: 10%;
   height: 100%;
-  color: blue;
-  position: relative;
-  
-  
-  
+  width: 100%;
+  background-attachment: fixed; 
+  padding: 0;
 }
-
-#menu {
-  background-image: url("../img/menu.jpg");
+ 
+.landing {
+  background-image: url('../img/bg1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
   top: 0%;
   left: 0%;
-  color:rgb(39, 23, 2);
-  margin-left: 0%;
-  width: 50%;
-  height: 100%;
-  display: none;
+  text-align: center;
+  font-family: 'Gabriela', sans-serif;
+  color: rgb(60, 10, 152);
+  background-attachment: scroll;
 }
 
-#order-form {
-  display: none;
-  background-color: antiquewhite;
-  width: 50%;
+#mennu {
+  color: rgb(11, 86, 14);
+}
+ .landing h1{
+  font-size: 100px;
+ }
+
+.top {
+  backdrop-filter: blur(10px);
+  border: 150px 20px;
   height: 100%;
-  
-  position: absolute;
   top: 0%;
-  left: 50%;
-  bottom: 50%;
+  padding: 20% 30px;
+}
+ 
+#menu {
+  background-image: url('../img/mn.jpg');
+  background-position: center;
+  text-align: center;
+  background-repeat: no-repeat;
 }
 
-#summary {
+#input {
+  background-image: url('../img/fbg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: aliceblue;
   display: none;
-  background-color: antiquewhite;
-  font-family: sans-serif;
-  
-
+  padding: 10px;
+}
+.form-control {
+  opacity: 0.956;
+  width: 70%;
 }
 
- #title {
-  font-size: 90px;
+#confirm {
+  background-color: antiquewhite;
+}
+
+#checkout {
+  background-color: aliceblue;
+  display: none;
+  padding: 10px;
+  width: 70%;
+}
+
+.col-md-6 {
+  padding: 10px;
+}
+.contact {
+  background-image: url('../img/cbg.jpg');
+  background-position: center;
+  color: white;
+  padding: 20px;
+}
+ .contact h1 {
+  text-align: center;
  }
 
- .left{
-  height: 100%;
+ #name,#email{
+  
+  background-color: antiquewhite;
  }
 
- .form-control {
-    width: 100%;
-    background-color: aliceblue;
-    opacity: 0.7;
- }
- label {
-  text-align: left;
- }
+#msg {
+  padding: 2%;
+  align-self: center;
+}
