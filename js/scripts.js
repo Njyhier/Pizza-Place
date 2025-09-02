@@ -59,7 +59,7 @@ function orderFromInputs(order) {
   let sizeIndex = $("#size").val();
   let crustIndex = $("#crust").val();
   let topIndex = $("#topping").val();
-  let address = document.getElementById("location");
+  
   
 
   let sizeSelected = sizes[sizeIndex];
@@ -75,6 +75,11 @@ function orderFromInputs(order) {
   let deliver = document.getElementById("delivery");
   if (deliver.checked) {
     total += deliveryFee;
+    address = $("#location").val();
+    document.getElementById("d-location").innerHTML = "Your order will be delivered to " + address;
+  }
+  else {
+    document.getElementById("d-location").innerHTML = "";
   }
 
    document.getElementById("o-size").innerHTML = "size" +"----- " + sizeSelected.size;
@@ -82,6 +87,8 @@ function orderFromInputs(order) {
    document.getElementById("o-top").innerHTML = "Toppings" + "----- " + toppingSelected.name;
    document.getElementById("quantity").innerHTML = "Quantity" + "----- " + number;
    document.getElementById("cost").innerHTML = "Cost" + "----- " + "Ksh" + total;
+   
+
 };
 
 //For the input form
@@ -115,25 +122,39 @@ function resetFields(){
     $("#crust").prop("selectedIndex", 0);
     $("#topping").prop("selectedIndex", 0);
     $("#orders").val("");
+    $("#location").val("");
 }
 
 //UI
 $(document).ready(function(){
   $("#mennu").click(function() {
     menu();
-    $("#menu").toggle(200);
+    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
   });
 
+  let number = 1
+  $("#inc").click(function(){
+    number++;
+    $("#orders").val(number);
+  });
   
+  $("#dec").click(function(){
+    if(number > 1) {
+      number--;
+      $("#orders").val(number);
+    }
+  })
 
   $("#confirm").click(function(event) {
     event.preventDefault();
     orderFromInputs();
-    $("#summary").show();
+    $("#checkout").show();
+    document.getElementById("checkout").scrollIntoView({behavior: "smooth"});
     
   });
   $(document).on("click", "#p-order", function(){
-    $("#order-form").show();
+    $("#input").show();
+    document.getElementById("input").scrollIntoView({behavior: "smooth"});
       sizeOptions();
       crustOptions();
       toppingOptions();
@@ -141,7 +162,7 @@ $(document).ready(function(){
   $("#submit").click(function(event){
     event.preventDefault();
     alert("Your order has been received and will be processed shortly");
-    $("#summary").hide();
+    $("#checkout").hide();
     resetFields();
-  })
+  });
 });
